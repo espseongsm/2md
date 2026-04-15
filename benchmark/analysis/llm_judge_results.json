@@ -1,0 +1,149 @@
+[
+  {
+    "file": "2025930046 청량리역 롯데캐슬 SKY-L65 불법행위 재공급 입주자모집공고문",
+    "scores": {
+      "2md": {
+        "faithfulness_to_pdf": 5,
+        "structure_preservation": 3,
+        "table_preservation": 3,
+        "readability": 4,
+        "hallucination_control": 5,
+        "overall": 4
+      },
+      "markitdown": {
+        "faithfulness_to_pdf": 4,
+        "structure_preservation": 2,
+        "table_preservation": 1,
+        "readability": 3,
+        "hallucination_control": 5,
+        "overall": 3
+      }
+    },
+    "winner": "2md",
+    "reasoning": "2md is significantly better at preserving the tabular nature of the document. While it struggles with complex table layouts (often flattening them into lists or simple 2-column tables), it maintains the relative grouping of data. Markitdown completely fails at table preservation, converting tables into long vertical lists of keys and values, which destroys the relationship between headers and data (e.g., the '단지 주요정보' section in Excerpt 1 becomes a disjointed list). 2md also preserves the page numbering and general flow more accurately.",
+    "evidence": [
+      "In Excerpt 1, 2md keeps the '일정' (Schedule) data in a readable horizontal sequence, whereas markitdown breaks it into a vertical list that is harder to parse.",
+      "In Excerpt 2, the '구분 서류유형' table is completely dismantled by markitdown into a series of single-word lines and disjointed bullets, while 2md maintains the text grouping.",
+      "In Excerpt 3, the '사업주체 및 시공업체' table is rendered as a structured list in 2md, but markitdown separates the headers ('상호명', '주소') from their corresponding values across multiple lines, reducing readability."
+    ],
+    "_raw_response": "{\n  \"file\": \"2025930046 청량리역 롯데캐슬 SKY-L65 불법행위 재공급 입주자모집공고문\",\n  \"scores\": {\n    \"2md\": {\n      \"faithfulness_to_pdf\": 5,\n      \"structure_preservation\": 3,\n      \"table_preservation\": 3,\n      \"readability\": 4,\n      \"hallucination_control\": 5,\n      \"overall\": 4\n    },\n    \"markitdown\": {\n      \"faithfulness_to_pdf\": 4,\n      \"structure_preservation\": 2,\n      \"table_preservation\": 1,\n      \"readability\": 3,\n      \"hallucination_control\": 5,\n      \"overall\": 3\n    }\n  },\n  \"winner\": \"2md\",\n  \"reasoning\": \"2md is significantly better at preserving the tabular nature of the document. While it struggles with complex table layouts (often flattening them into lists or simple 2-column tables), it maintains the relative grouping of data. Markitdown completely fails at table preservation, converting tables into long vertical lists of keys and values, which destroys the relationship between headers and data (e.g., the '단지 주요정보' section in Excerpt 1 becomes a disjointed list). 2md also preserves the page numbering and general flow more accurately.\",\n  \"evidence\": [\n    \"In Excerpt 1, 2md keeps the '일정' (Schedule) data in a readable horizontal sequence, whereas markitdown breaks it into a vertical list that is harder to parse.\",\n    \"In Excerpt 2, the '구분 서류유형' table is completely dismantled by markitdown into a series of single-word lines and disjointed bullets, while 2md maintains the text grouping.\",\n    \"In Excerpt 3, the '사업주체 및 시공업체' table is rendered as a structured list in 2md, but markitdown separates the headers ('상호명', '주소') from their corresponding values across multiple lines, reducing readability.\"\n  ]\n}"
+  },
+  {
+    "file": "Agentic_Design_Patterns",
+    "scores": {
+      "2md": {
+        "faithfulness_to_pdf": 2,
+        "structure_preservation": 3,
+        "table_preservation": 2,
+        "readability": 3,
+        "hallucination_control": 1,
+        "overall": 2
+      },
+      "markitdown": {
+        "faithfulness_to_pdf": 5,
+        "structure_preservation": 4,
+        "table_preservation": 3,
+        "readability": 4,
+        "hallucination_control": 5,
+        "overall": 4
+      }
+    },
+    "winner": "markitdown",
+    "reasoning": "2md suffers from severe hallucinations and content drift. In Excerpt 2, 2md completely replaces the PDF's content (which discusses A2A protocols and Python code) with entirely different text about 'Streaming Request Examples' and 'Mutual Transport Layer Security' that does not appear in the ground truth excerpt. Markitdown, conversely, remains faithful to the text, correctly capturing the code blocks and the specific technical discussions present in the PDF.",
+    "evidence": [
+      "2md Excerpt 2 contains a 'Streaming Request Example' JSON block and 'Mutual Transport Layer Security' text not found in the PDF ground truth.",
+      "Markitdown Excerpt 2 correctly preserves the Python code starting with 'import datetime' and the discussion of the A2A repository.",
+      "2md creates a random table for the 'Foreword' in Excerpt 1 where no table exists in the PDF.",
+      "Markitdown accurately reproduces the bulleted lists and technical questions in Excerpt 3."
+    ],
+    "_raw_response": "{\n  \"file\": \"Agentic_Design_Patterns\",\n  \"scores\": {\n    \"2md\": {\n      \"faithfulness_to_pdf\": 2,\n      \"structure_preservation\": 3,\n      \"table_preservation\": 2,\n      \"readability\": 3,\n      \"hallucination_control\": 1,\n      \"overall\": 2\n    },\n    \"markitdown\": {\n      \"faithfulness_to_pdf\": 5,\n      \"structure_preservation\": 4,\n      \"table_preservation\": 3,\n      \"readability\": 4,\n      \"hallucination_control\": 5,\n      \"overall\": 4\n    }\n  },\n  \"winner\": \"markitdown\",\n  \"reasoning\": \"2md suffers from severe hallucinations and content drift. In Excerpt 2, 2md completely replaces the PDF's content (which discusses A2A protocols and Python code) with entirely different text about 'Streaming Request Examples' and 'Mutual Transport Layer Security' that does not appear in the ground truth excerpt. Markitdown, conversely, remains faithful to the text, correctly capturing the code blocks and the specific technical discussions present in the PDF.\",\n  \"evidence\": [\n    \"2md Excerpt 2 contains a 'Streaming Request Example' JSON block and 'Mutual Transport Layer Security' text not found in the PDF ground truth.\",\n    \"Markitdown Excerpt 2 correctly preserves the Python code starting with 'import datetime' and the discussion of the A2A repository.\",\n    \"2md creates a random table for the 'Foreword' in Excerpt 1 where no table exists in the PDF.\",\n    \"Markitdown accurately reproduces the bulleted lists and technical questions in Excerpt 3.\"\n  ]\n}"
+  },
+  {
+    "file": "Soonmo_Seong_CV_20260206",
+    "scores": {
+      "2md": {
+        "faithfulness_to_pdf": 4,
+        "structure_preservation": 2,
+        "table_preservation": 1,
+        "readability": 4,
+        "hallucination_control": 5,
+        "overall": 3
+      },
+      "markitdown": {
+        "faithfulness_to_pdf": 5,
+        "structure_preservation": 2,
+        "table_preservation": 1,
+        "readability": 4,
+        "hallucination_control": 5,
+        "overall": 4
+      }
+    },
+    "winner": "markitdown",
+    "reasoning": "Both models failed significantly on structure preservation, treating a CV with many headers and tabular layouts as plain text. However, markitdown is more faithful to the content. 2md introduced a typo/hallucination in the phone number (adding a space: '82-10-7286-28 50'), whereas markitdown preserved it correctly. Both failed to identify the 14 tables mentioned in the benchmark, but markitdown's text flow is slightly more accurate to the PDF's content.",
+    "evidence": [
+      "2md hallucinated a space in the phone number: '82-10-7286-28 50' vs PDF '82-10-7286-2850'.",
+      "Both models failed to use Markdown headers (#) despite the PDF having 33 headers.",
+      "Both models failed to convert the tabular layout of the experience and education sections into Markdown tables."
+    ],
+    "_raw_response": "{\n  \"file\": \"Soonmo_Seong_CV_20260206\",\n  \"scores\": {\n    \"2md\": {\n      \"faithfulness_to_pdf\": 4,\n      \"structure_preservation\": 2,\n      \"table_preservation\": 1,\n      \"readability\": 4,\n      \"hallucination_control\": 5,\n      \"overall\": 3\n    },\n    \"markitdown\": {\n      \"faithfulness_to_pdf\": 5,\n      \"structure_preservation\": 2,\n      \"table_preservation\": 1,\n      \"readability\": 4,\n      \"hallucination_control\": 5,\n      \"overall\": 4\n    }\n  },\n  \"winner\": \"markitdown\",\n  \"reasoning\": \"Both models failed significantly on structure preservation, treating a CV with many headers and tabular layouts as plain text. However, markitdown is more faithful to the content. 2md introduced a typo/hallucination in the phone number (adding a space: '82-10-7286-28 50'), whereas markitdown preserved it correctly. Both failed to identify the 14 tables mentioned in the benchmark, but markitdown's text flow is slightly more accurate to the PDF's content.\",\n  \"evidence\": [\n    \"2md hallucinated a space in the phone number: '82-10-7286-28 50' vs PDF '82-10-7286-2850'.\",\n    \"Both models failed to use Markdown headers (#) despite the PDF having 33 headers.\",\n    \"Both models failed to convert the tabular layout of the experience and education sections into Markdown tables.\"\n  ]\n}"
+  },
+  {
+    "file": "The-Complete-Guide-to-Building-Skill-for-Claude",
+    "scores": {
+      "2md": {
+        "faithfulness_to_pdf": 5,
+        "structure_preservation": 4,
+        "table_preservation": 3,
+        "readability": 4,
+        "hallucination_control": 5,
+        "overall": 4
+      },
+      "markitdown": {
+        "faithfulness_to_pdf": 2,
+        "structure_preservation": 2,
+        "table_preservation": 1,
+        "readability": 2,
+        "hallucination_control": 2,
+        "overall": 2
+      }
+    },
+    "winner": "2md",
+    "reasoning": "2md is significantly more faithful to the source text. Markitdown suffers from severe 'shuffling' or 'interleaving' of text, where content from different columns or sections is merged incorrectly (e.g., in Excerpt 1, it inserts a 'Two Paths Through This Guide' section into the middle of the Introduction paragraph). Markitdown also fails to maintain the logical flow of the Table of Contents, separating the titles from their page numbers. 2md preserves the linear reading order and content integrity much better, although it struggles with the structural conversion of the PDF's layout into Markdown headers (as seen in the benchmark counts).",
+    "evidence": [
+      "Markitdown interleaves unrelated text: 'A skill is a set of instructions... [Two Paths Through This Guide] how to handle specific tasks...'",
+      "Markitdown breaks the Table of Contents into two separate lists of titles and numbers, whereas 2md keeps them associated.",
+      "Markitdown introduces fragmented text blocks in Excerpt 2 (e.g., 'Execution issues' appearing in the middle of the 'To use' section) that do not follow the PDF's logical flow.",
+      "2md maintains the exact wording and sequence of the Introduction and Reference sections."
+    ],
+    "_raw_response": "{\n  \"file\": \"The-Complete-Guide-to-Building-Skill-for-Claude\",\n  \"scores\": {\n    \"2md\": {\n      \"faithfulness_to_pdf\": 5,\n      \"structure_preservation\": 4,\n      \"table_preservation\": 3,\n      \"readability\": 4,\n      \"hallucination_control\": 5,\n      \"overall\": 4\n    },\n    \"markitdown\": {\n      \"faithfulness_to_pdf\": 2,\n      \"structure_preservation\": 2,\n      \"table_preservation\": 1,\n      \"readability\": 2,\n      \"hallucination_control\": 2,\n      \"overall\": 2\n    }\n  },\n  \"winner\": \"2md\",\n  \"reasoning\": \"2md is significantly more faithful to the source text. Markitdown suffers from severe 'shuffling' or 'interleaving' of text, where content from different columns or sections is merged incorrectly (e.g., in Excerpt 1, it inserts a 'Two Paths Through This Guide' section into the middle of the Introduction paragraph). Markitdown also fails to maintain the logical flow of the Table of Contents, separating the titles from their page numbers. 2md preserves the linear reading order and content integrity much better, although it struggles with the structural conversion of the PDF's layout into Markdown headers (as seen in the benchmark counts).\",\n  \"evidence\": [\n    \"Markitdown interleaves unrelated text: 'A skill is a set of instructions... [Two Paths Through This Guide] how to handle specific tasks...'\",\n    \"Markitdown breaks the Table of Contents into two separate lists of titles and numbers, whereas 2md keeps them associated.\",\n    \"Markitdown introduces fragmented text blocks in Excerpt 2 (e.g., 'Execution issues' appearing in the middle of the 'To use' section) that do not follow the PDF's logical flow.\",\n    \"2md maintains the exact wording and sequence of the Introduction and Reference sections.\"\n  ]\n}"
+  },
+  {
+    "file": "[SHARE] 202601XX_Press Release_Data Superhero_draft (1)",
+    "scores": {
+      "2md": {
+        "faithfulness_to_pdf": 5,
+        "structure_preservation": 3,
+        "table_preservation": 3,
+        "readability": 4,
+        "hallucination_control": 5,
+        "overall": 4
+      },
+      "markitdown": {
+        "faithfulness_to_pdf": 5,
+        "structure_preservation": 2,
+        "table_preservation": 1,
+        "readability": 3,
+        "hallucination_control": 4,
+        "overall": 3
+      }
+    },
+    "winner": "2md",
+    "reasoning": "2md is the superior conversion because it attempts to organize the contact information at the end of the document into tables, whereas markitdown simply lists the names and emails as a vertical stream of text, destroying the relationship between the contact person and their details. 2md also avoids the inclusion of form-feed characters (\\f) which appear in the markitdown output. Both were faithful to the text content.",
+    "evidence": [
+      "2md converted the contact section into tables (e.g., | 스노우플레이크 코리아 | presskr@snowflake.com |), preserving the association between entity and email.",
+      "markitdown listed contact details as a flat list (박수진, 김재현, etc., followed by emails), making it harder to read and losing the tabular structure of the PDF.",
+      "markitdown contains noise characters like 'f' (form-feed) at the start of several paragraphs."
+    ],
+    "_raw_response": "{\n  \"file\": \"[SHARE] 202601XX_Press Release_Data Superhero_draft (1)\",\n  \"scores\": {\n    \"2md\": {\n      \"faithfulness_to_pdf\": 5,\n      \"structure_preservation\": 3,\n      \"table_preservation\": 3,\n      \"readability\": 4,\n      \"hallucination_control\": 5,\n      \"overall\": 4\n    },\n    \"markitdown\": {\n      \"faithfulness_to_pdf\": 5,\n      \"structure_preservation\": 2,\n      \"table_preservation\": 1,\n      \"readability\": 3,\n      \"hallucination_control\": 4,\n      \"overall\": 3\n    }\n  },\n  \"winner\": \"2md\",\n  \"reasoning\": \"2md is the superior conversion because it attempts to organize the contact information at the end of the document into tables, whereas markitdown simply lists the names and emails as a vertical stream of text, destroying the relationship between the contact person and their details. 2md also avoids the inclusion of form-feed characters (\\\\f) which appear in the markitdown output. Both were faithful to the text content.\",\n  \"evidence\": [\n    \"2md converted the contact section into tables (e.g., | 스노우플레이크 코리아 | presskr@snowflake.com |), preserving the association between entity and email.\",\n    \"markitdown listed contact details as a flat list (박수진, 김재현, etc., followed by emails), making it harder to read and losing the tabular structure of the PDF.\",\n    \"markitdown contains noise characters like 'f' (form-feed) at the start of several paragraphs.\"\n  ]\n}"
+  }
+]
