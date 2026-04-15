@@ -94,6 +94,18 @@ Generated outputs:
 - Supplementary LLM judge CSV: `benchmark/analysis/llm_judge_results.csv`
 - Supplementary LLM judge JSON: `benchmark/analysis/llm_judge_results.json`
 
+## Key Benchmark Insights
+
+The full benchmark summary is in `benchmark/benchmark_results.md`. The main takeaways are:
+
+- **Speed**: `2md` is the clear runtime winner, averaging about **0.66s** per file versus **9.34s** for `markitdown`, or roughly **14x faster** on the benchmark set.
+- **Semantic accuracy**: `2md` performs better on average in `Cosine`, `L2`, `BERTScore`, and `EditDist`, which suggests stronger semantic preservation against the original PDF ground truth.
+- **Lexical overlap**: `markitdown` performs better on average in `Jaccard` and `BLEU`, so it retains slightly more direct token- and phrase-level overlap with the extracted PDF text.
+- **Structure preservation**: the custom `MarkdownStructureScore` is very close overall, with a slight edge to `2md`; `2md` does better on table and image preservation, while `markitdown` does better on list-count preservation.
+- **Supplementary LLM judge**: on the 5 evaluated PDFs, the LLM judge favored `2md` on **3 files** and `markitdown` on **2 files**.
+
+In short: **`2md` is much faster and stronger on average semantic fidelity, while `markitdown` remains competitive on direct lexical overlap and wins on some individual documents.**
+
 ## LLM-as-a-Judge
 
 The repository also includes `benchmark/analysis/llm_judge.py` for supplementary judging with an OpenAI-compatible endpoint such as vLLM.
@@ -133,12 +145,6 @@ Notes:
 - The judge is supplementary and does not replace the numeric benchmark metrics.
 - The script uses excerpts rather than full documents so it stays practical with long PDFs and model context limits.
 - A valid API key and model id are required if the endpoint is protected.
-
-Current benchmark snapshot:
-- `2md` is substantially faster than `markitdown` in the included benchmark set.
-- `2md` performs better on average in semantic metrics such as `Cosine`, `L2`, `BERTScore`, and `EditDist`.
-- `markitdown` performs better on average in lexical overlap metrics such as `Jaccard` and `BLEU`.
-- The custom `MarkdownStructureScore` is very close, with a slight edge to `2md` in the current evaluated set.
 
 ## Development and Conventions
 
