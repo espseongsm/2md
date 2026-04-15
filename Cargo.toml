@@ -1,0 +1,17 @@
+[package]
+name = "twomd"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+anyhow = "1.0.102"
+clap = { version = "4.5.60", features = ["derive"] }
+image = "0.25.10"
+lopdf = "0.39.0"
+pdf-extract = "0.10.0"
+plotly = { version = "0.14.1", features = ["static_export_default"] }
+rand = "0.8.5"
+strsim = "0.11.1"
+
+[dev-dependencies]
+rayon = "1.11.0"
