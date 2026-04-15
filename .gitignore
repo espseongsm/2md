@@ -5,3 +5,4 @@
 /data/
 /.pycache_local/
 !/benchmark/benchmark_results.md
+!/benchmark/benchmark_chart.png
