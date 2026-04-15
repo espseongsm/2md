@@ -30,6 +30,60 @@ cd 2md
 cargo build --release
 ```
 
+## Using as a Rust Crate
+
+This repository also exposes a library crate named `twomd`, so you can use the PDF-to-Markdown logic from your own Rust code.
+
+Add it to `Cargo.toml`.
+
+Using a local path:
+
+```toml
+[dependencies]
+twomd = { path = "../2md" }
+```
+
+Using GitHub directly:
+
+```toml
+[dependencies]
+twomd = { git = "https://github.com/espseongsm/2md.git" }
+```
+
+Minimal example:
+
+```rust
+use std::path::Path;
+use twomd::pdf::extract_and_format;
+
+fn main() -> anyhow::Result<()> {
+    let result = extract_and_format(Path::new("data/sample.pdf"))?;
+
+    println!("Similarity: {:.2}%", result.similarity_score * 100.0);
+    println!("{}", result.markdown);
+
+    Ok(())
+}
+```
+
+If you also want the same output-path behavior as the CLI:
+
+```rust
+use std::path::{Path, PathBuf};
+use twomd::converter::resolve_output_plan;
+
+fn main() -> anyhow::Result<()> {
+    let plan = resolve_output_plan(Path::new("data/sample.pdf"), Some(PathBuf::from("out")))?;
+    println!("Markdown path: {}", plan.markdown_path.display());
+    println!("Asset dir: {}", plan.asset_dir.display());
+    Ok(())
+}
+```
+
+Current public modules:
+- `twomd::pdf`
+- `twomd::converter`
+
 ## Usage
 
 The primary command requires an input PDF file. You can optionally specify an output directory or exact file path.
