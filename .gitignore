@@ -1,1 +1,7 @@
 /target
+/benchmark/*
+!/benchmark/analysis/
+!/benchmark/analysis/**
+/data/
+/.pycache_local/
+!/benchmark/benchmark_results.md

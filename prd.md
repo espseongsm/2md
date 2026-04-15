@@ -15,11 +15,42 @@ The language is Rust for memory safety and speed.
 - Hyperlink in the document should be converted into markdown hyperlink.
 - The converted markdown file should be well-formatted and easy to read.
 - **Performance & Accuracy Goals**:
-  - **Conversion Speed**: Target a significant lead over existing Python-based solutions (e.g., MarkItDown). Benchmark showed `2md` is ~14x faster on average.
-  - **Semantic Fidelity**: Ensure a high semantic similarity score (Target > 0.90) compared to the original PDF ground truth using embedding-based metrics.
-  - **Token Recall**: Maintain high text recovery (Target > 90%) to ensure no critical information is lost during conversion.
-- Please check the similarity of the converted markdown file with the original document. The similarity should be above 90%. Randomly select 5,000 words and check the similarity.
+  - **Conversion Speed**: Target a significant lead over existing Python-based solutions such as MarkItDown.
+  - **PDF-Ground-Truth Evaluation**: The original PDF is the ground truth. Evaluation should compare `PDF -> 2md Markdown` and `PDF -> markitdown Markdown`, then compare those metric values side by side.
+  - **Semantic Fidelity**: Ensure high semantic similarity to the original PDF using embedding-based metrics such as `Cosine`, `L2`, `SoftCosine`, and `BERTScore`.
+  - **Lexical Fidelity**: Measure direct textual overlap using `Jaccard`, `BLEU`, and `EditDist`.
+  - **Markdown Structure Preservation**: Measure how well tables, headers, lists, and images are preserved using custom structure metrics.
+  - **Supplementary LLM Judgment**: Add an LLM-as-a-judge layer for qualitative comparison of `2md` vs `markitdown`, but keep numeric PDF-ground-truth metrics as the primary benchmark.
+- Please check the similarity of the converted markdown file with the original document using the benchmark pipeline in `benchmark/analysis/evaluate.py`.
 - Please check the conversion speed per file.
+
+## Evaluation Metrics
+
+- **Semantic / textual metrics**
+  - `Jaccard`: unique-token overlap between PDF text and Markdown text
+  - `BLEU`: precision-oriented n-gram overlap, useful for detecting hallucinated or noisy output
+  - `Cosine`: embedding cosine similarity
+  - `L2`: embedding distance
+  - `SoftCosine`: embedding-aware token similarity
+  - `BERTScore`: contextual semantic similarity
+  - `EditDist`: normalized Levenshtein similarity
+- **Structure / layout metrics**
+  - `Struct`: header-set overlap between PDF-detected headers and Markdown headers
+  - `HeaderScore`: normalized count similarity for headings
+  - `ListScore`: normalized count similarity for lists
+  - `TableScore`: normalized count similarity for tables
+  - `ImageScore`: normalized count similarity for images
+  - `MarkdownStructureScore`: mean of `HeaderScore`, `ListScore`, `TableScore`, and `ImageScore`
+  - `Richness`: output-side Markdown structure count, useful as a descriptive metric but not a direct PDF-ground-truth score
+
+## Benchmark Outputs
+
+- Evaluation CSV: `benchmark/analysis/comprehensive_evaluation.csv`
+- Human-readable benchmark summary: `benchmark/benchmark_results.md`
+- Benchmark evaluator: `benchmark/analysis/evaluate.py`
+- Supplementary LLM judge CSV: `benchmark/analysis/llm_judge_results.csv`
+- Supplementary LLM judge JSON: `benchmark/analysis/llm_judge_results.json`
+- Supplementary LLM judge script: `benchmark/analysis/llm_judge.py`
 
 ## Data
 
